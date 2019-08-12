@@ -30,7 +30,7 @@ public class LogUploader {
 
     public static void sendLogStream(String log){
         try{
-            //不同的日志类型对应不同的URL
+            //不同的日志类型对应不同的URL 123123123
 
             URL url  =new URL("http://logserver/log");
 
