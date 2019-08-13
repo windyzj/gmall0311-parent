@@ -12,6 +12,7 @@
         <module>gmall0311-common</module>
         <module>gmall0311-mock</module>
         <module>gmall0311-logger</module>
+        <module>gmall0311-realtime</module>
     </modules>
 
     <parent>
