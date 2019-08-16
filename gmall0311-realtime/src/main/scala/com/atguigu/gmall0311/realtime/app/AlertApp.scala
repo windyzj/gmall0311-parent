@@ -97,4 +97,3 @@ object AlertApp {
 }
 
 
-multi-thread
