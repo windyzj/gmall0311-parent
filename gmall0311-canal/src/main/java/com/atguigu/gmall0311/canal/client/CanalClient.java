@@ -50,12 +50,6 @@ public class CanalClient {
                 }
 
 
-
-
-
-
-
-
             }
 
 

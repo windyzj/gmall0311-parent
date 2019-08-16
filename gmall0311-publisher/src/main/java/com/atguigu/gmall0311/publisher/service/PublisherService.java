@@ -11,4 +11,8 @@ public interface PublisherService {
 
 
     public Map<String,Long> getDauHourCount(String date);
+
+    public  Double getOrderAmount(String date);
+
+    public Map<String,Double> getOrderHourAmount(String date);
 }
