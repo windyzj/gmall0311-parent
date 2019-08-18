@@ -6,6 +6,7 @@ import com.atguigu.gmall0311.canal.util.MyKafkaSender;
 import com.atguigu.gmall0311.common.constant.GmallConstants;
 
 import java.util.List;
+import java.util.Random;
 
 
 public class CanalHanlder {
@@ -24,6 +25,14 @@ public class CanalHanlder {
         if(tableName.equals("order_info")&&eventType.equals(CanalEntry.EventType.INSERT)){
             for (CanalEntry.RowData rowData : rowDataList) {
                 sendKafka(  rowData, GmallConstants.KAFKA_TOPIC_ORDER);
+            }
+        }else if(tableName.equals("order_detail")&&eventType.equals(CanalEntry.EventType.INSERT)){
+            for (CanalEntry.RowData rowData : rowDataList) {
+                sendKafka(  rowData, GmallConstants.KAFKA_TOPIC_ORDER_DETAIL);
+            }
+        }else if(tableName.equals("user_info")&&(eventType.equals(CanalEntry.EventType.INSERT)||eventType.equals(CanalEntry.EventType.UPDATE))){
+            for (CanalEntry.RowData rowData : rowDataList) {
+                sendKafka(  rowData, GmallConstants.KAFKA_TOPIC_USER_INFO);
             }
         }
 
@@ -46,6 +55,11 @@ public class CanalHanlder {
         String rowJson = jsonObject.toJSONString();
 
         MyKafkaSender.send(topic,rowJson);
+        try {
+            Thread.sleep(new Random().nextInt(3)*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
